@@ -1,0 +1,20 @@
+{
+  "name": "missao-crud-iniciante-mongodb-intro-e-implementacao",
+  "version": "1.0.0",
+  "description": "Projeto da Missao do Aprendizado da Profissão Dev Backend Javascript Iniciante: Mongodb: Intro e Imlementacao",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": " nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongodb": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
