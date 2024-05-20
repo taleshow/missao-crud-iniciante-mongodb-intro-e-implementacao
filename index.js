@@ -23,13 +23,13 @@ const collection = db.collection('personagem')
     res.send("Hello World");
   });
 
-  const lista = ['java', 'kotlin', 'Android']
+  const lista = ["java", "kotlin", "Android"]
   //             0         1         2
 
   // Endpoint Read all [GET] /personagem
   app.get('/personagem', async function (req, res) {
     // acessamos a lista de itens na collection do MongoDB
-    const itens = await Collection.find().toArray()
+      const itens = await collection.find().toArray()
 
     // Enviamos a lista de itens como resultado
     res.send(itens)
