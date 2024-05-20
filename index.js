@@ -1,17 +1,17 @@
-const express = require("express");
-const { MongoClient, Collection } = require("mongodb");
+const express = require('express');
+const { MongoClient, Collection } = require('mongodb');
 
 // preparamos as informacões de acesso ao banco de dados
-const dburl =
-  "mongodb+srv://admin:ra7em1he5@cluster0.uaufxov.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const dbName = "mongodb-intro-e-implementacao";
+const dbUrl =
+  'mongodb+srv://admin:ra7em1he5@cluster0.uaufxov.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const dbName = 'mongodb-intro-e-implementacao'
 
 //declarmos a funcao main
 async function main() {
   // realizamos a coneccão com o banco de dados
-  const client = new MongoClient(dburl);
+  const client = new MongoClient(dbUrl);
   console.log("conectando ao banco de dados...");
-  await client.connect();
+  await client.connect()
   console.log("banco de dados conectado com sucesso");
 
 const db = client.db(dbName)
@@ -19,21 +19,21 @@ const collection = db.collection('personagem')
 
   const app = express()
 
-  app.get("/", function (req, res) {
+  app.get('/', function (req, res) {
     res.send("Hello World");
   });
 
-  const lista = ["java", "kotlin", "android"];
+  const lista = ['java', 'kotlin', 'Android']
   //             0         1         2
 
   // Endpoint Read all [GET] /personagem
-  app.get("/personagem", async function (req, res) {
+  app.get('/personagem', async function (req, res) {
     // acessamos a lista de itens na collection do MongoDB
-    const itens = await Collection.find().toArray();
+    const itens = await Collection.find().toArray()
 
     // Enviamos a lista de itens como resultado
-    res.send(itens);
-  });
+    res.send(itens)
+  })
 
   // Endpoint Read By ID [GET] /personagem/:id
   app.get("/personagem/:id", function (req, res) {
