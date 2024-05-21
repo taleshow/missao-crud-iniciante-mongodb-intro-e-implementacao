@@ -57,30 +57,27 @@ if (!item){
   app.use(express.json());
 
   // endpoint create [post] /personagem
-  app.post("/personagem", function (req, res) {
+  app.post("/personagem", async function (req, res) {
     //acessamos o Body da requisicão
-    const body = req.body;
+    const novoItem = req.body;
 
-    //acessamos a propriedade `nome` do body
-    const novoItem = body.nome;
+   
 
     //checar se o `nome` esta presente no body
-    if (!novoItem) {
-      return res
-        .status(400)
-        .send("corpo da requisicão deve conter a propriedade `nome`.");
+    if (!novoItem || !novoItem.nome) {
+      return res.status(400).send("corpo da requisicão deve conter a propriedade `nome`.");
     }
 
     //checar se o novoItem estar na lista ou nao
-    if (lista.includes(novoItem)) {
-      return res.status(409).send("Esse item ja existe na lista.");
-    }
+    // if (lista.includes(novoItem)) {
+    //   return res.status(409).send("Esse item ja existe na lista.");
+    // }
 
-    // Adicionamos na Lista
-    lista.push(novoItem);
+    // Adicionamos na collection
+    await collection.insertOne(novoItem)
 
     //exibimos uma mensagem de sucesso
-    res.send("Item adicionado com sucesso " + novoItem);
+    res.status(201).send(novoItem);
   });
 
   // endpoint updade [put] /personagem/:id
